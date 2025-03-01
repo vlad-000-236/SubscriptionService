@@ -29,7 +29,7 @@ public class SubscriptionController {
     }
 
     @GetMapping("/top")
-    public List<Subscription> getTopSubscriptions() {
+    public List<String> getTopSubscriptions() {
         return subscriptionService.getTop3Subscriptions();
     }
 }
