@@ -14,17 +14,17 @@ public class SubscriptionController {
     private SubscriptionService subscriptionService;
 
     @PostMapping
-    public Subscription addSubscription(@PathVariable Long userId, @RequestParam String serviceName) {
+    public Subscription addSubscription(@PathVariable long userId, @RequestParam String serviceName) {
         return subscriptionService.addSubscription(userId, serviceName);
     }
 
     @GetMapping
-    public List<Subscription> getSubscriptions(@PathVariable Long userId) {
+    public List<Subscription> getSubscriptions(@PathVariable long userId) {
         return subscriptionService.getSubscriptionsByUserId(userId);
     }
 
     @DeleteMapping("/{subId}")
-    public void deleteSubscription(@PathVariable Long subId) {
+    public void deleteSubscription(@PathVariable long subId) {
         subscriptionService.deleteSubscription(subId);
     }
 

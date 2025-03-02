@@ -12,23 +12,31 @@ import java.util.List;
 @Service
 @Slf4j
 public class SubscriptionServiceImplementation implements SubscriptionService{
-    @Autowired
-    private SubscriptionRepository subscriptionRepository;
 
-    public Subscription addSubscription(Long userId, String serviceName) {
-        User user = new User();
+    private SubscriptionRepository subscriptionRepository;
+    private Subscription subscription;
+    private User user;
+
+    @Autowired
+    public SubscriptionServiceImplementation(User user, SubscriptionRepository subscriptionRepository,
+                                             Subscription subscription){
+        this.user = user;
+        this.subscriptionRepository = subscriptionRepository;
+        this.subscription = subscription;
+    }
+
+    public Subscription addSubscription(long userId, String serviceName) {
         user.setId(userId);
-        Subscription subscription = new Subscription();
         subscription.setServiceName(serviceName);
         subscription.setUser(user);
         return subscriptionRepository.save(subscription);
     }
 
-    public List<Subscription> getSubscriptionsByUserId(Long userId) {
+    public List<Subscription> getSubscriptionsByUserId(long userId) {
         return subscriptionRepository.findByUserId(userId);
     }
 
-    public void deleteSubscription(Long id) {
+    public void deleteSubscription(long id) {
         subscriptionRepository.deleteById(id);
     }
 

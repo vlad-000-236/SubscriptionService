@@ -16,11 +16,11 @@ public class UserServiceImplementation implements UserService{
         return userRepository.save(user);
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User updateUser(Long id, User userDetails) {
+    public User updateUser(long id, User userDetails) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
             user.setName(userDetails.getName());
@@ -30,7 +30,7 @@ public class UserServiceImplementation implements UserService{
         return null;
     }
 
-    public void deleteUser(Long id) {
+    public void deleteUser(long id) {
         userRepository.deleteById(id);
     }
 }
